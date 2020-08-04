@@ -1,0 +1,101 @@
+Docker
+		yumでDockerをインストール
+			・ルートユーザーやルート権限で実行
+			・「yum -y install docker」コマンドを実行
+		
+		デーモンの起動
+			・「systemctl start docker」コマンドを入力
+		サービスのスタート
+			・「service docker start」コマンドを入力
+				
+		毎度起動するのは面倒なので、ブート時に自動起動する設定
+			・「systemctl enable docker」を入力
+			・「chkconfig docker on」を入力
+			・systemctl	サービスの起動・停止・状態確認
+			・chkconfig	OS起動時に起動するサービスの登録や削除など
+		
+		他の簡単なコマンド
+			・「docker version」		バージョン確認
+			・「docker system info」	実行環境の確認
+			・「docker system df」		ディスク利用状況確認
+		
+		イメージのダウンロード
+			・「docker pull」	必要なDockerイメージをDocker Hubからダウンロード
+			・「docker pull nginx」	nginxのイメージをダウンロード
+			
+		ダウンロードしたイメージの確認
+			・「docker image ls」	ホストマシン上のイメージ一覧取得
+			重要な内容
+				・REPOSITORY	リポジトリ、イメージの名前
+				・IMAGE ID		イメージID。個々のイメージ識別に利用
+		
+		コンテナの生成・起動
+			・「docker container run」コマンドを利用
+			・「docker container run --name webserver -d -p 80:80 nginx」
+			      コマンド本体　　　　　　コンテナ名指定　　　オプション　イメージ名
+			
+			オプションの意味
+			・「-d」デタッチモードを表すオプション、バックグラウンドで起動させたい時につける
+				　　このオプションがないと、他のサービスを同時に実行できない。
+			・「-p」ポート番号の設定　ホストのポート番号とコンテナのポート番号を関連付ける
+				　　「ホスト側番号:コンテナ側番号」で記述。80:80だと共にポート80番
+			
+			virtualboxのポート設定
+			・設定→ネットワーク→高度→ポートフォワーディングでnginxだったら、「名前：http ホストポート:80 ゲストポート:80」と設定
+			
+		コンテナの停止と起動
+			・停止「docker stop」コマンド
+			・「docker stop webserver」	webserverが停止する
+			・起動「docker start」コマンド
+			・「docker start webserver」webserverが起動する
+			
+		コンテナの動作確認
+			・「docker container ls」
+	
+		dockerでLinuxを動かす
+			・「docker image pull ubuntu:18.04」コマンドを実行　
+			・タグの「:18.04」を省略すると最新版がDL
+			
+			コンテナの生成・起動
+				・「docker container run --name my-ubuntu -it -d ubuntu:18.04」
+				
+				オプションの意味
+				・「-it」	-iオプションと-tオプションを合わせたもの。これをつけるとターミナルでコンテナを実行できる
+					・-i	標準入力を開く
+					・-t	ttyを割り当てる	
+						ttyとは？標準入出力となっている端末デバイス（ディスプレイとキーボード）
+					
+			動作の確認①
+				・「docker exec」	稼働中のコンテナに接続
+				・「docker exec -it my-ubuntu /bin/echo "hello"」
+				
+			動作の確認②
+				・「docker container attach」	稼働中のコンテナに接続
+				・「docker container attach my-ubuntu」
+				・終了時はexitコマンド。しかし終了するとubuntuが停止するため、「docker start」コマンドを実行すること
+
+
+		コンテナの削除
+			・コンテナを停止してから削除する
+			・「docker container rm コンテナ名」コマンドを実行
+			
+		イメージの削除
+			・「docker image rm イメージ名」コマンドを実行
+			
+		不要なイメージとコンテナを一括削除
+			・「docker system prune」	不要なイメージ・コンテナを一括削除
+			・「docker image prune」	不要なイメージのみ削除
+			・「docker container prune」不要なコンテナのみ削除
+			・docker run イメージ名とすると、無名のコンテナが残ってしまうので、イメージ削除に-fが必要
+			・しかしdocker container pruneをすると無名のコンテナが消えるので、その後、docker image rmでイメージが普通に削除できる
+		
+		コンテナとしてOSを起動する場合（イメージ取得してコンテナを作って起動まで一発）
+			・「docker run -it OS名:タグ」	pullしてrunしてattachまで一発
+				コンテナ名は自動生成される。
+		
+		起動しているOSから抜ける場合
+			・exit もしくは　CTRL＋c	コンテナが終了してしまう
+			・CTRL+pとCTRL+q		  コンテナが終了しない
+				コンテナを終了せず停止すると、再びattachで再接続可能
+		
+			
