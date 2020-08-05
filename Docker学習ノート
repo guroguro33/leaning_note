@@ -98,4 +98,35 @@ Docker
 			・CTRL+pとCTRL+q		  コンテナが終了しない
 				コンテナを終了せず停止すると、再びattachで再接続可能
 		
+		Dockerfileの基本構造
+			・構文「コマンド名　パラメータ」
+			・コマンド名	アルファベットの大文字で記述
+				・「FROM」	ベースイメージの設定
+				・「CMD」	docker run時に実行されるコマンド
+				
+		イメージの生成
+			・ホームディレクトリに戻ってDockerイメージを作成
+			・「docker image build -t hello-example myhello」
+			                          イメージ名　　ディレクトリ名
+		
+		Dockerイメージをアップロード
+			・Dockerイメージのタグづけ
+				・「Docker image tag」コマンドでイメージにタグづけ
+				・Docker Hubに登録するには以下の形式にする必要がある
+					・<Docker Hubのユーザー名/イメージ名:タグ名>
+				・「docker image tag hello-example kameda05/hello-ex:1.0」
+				                  ベースのイメージ名　ユーザー名 イメージ名 タグ名
+				・docker image lsで確認すると表示される
 			
+			・Docker Hubへのログイン
+				・「docker login」と入力
+					・UsernameとPasswordを入力
+			
+			・ログイン後、Dockerイメージのアップロード
+				・「docker image push」コマンド
+				・「docker image push kameda05/hello-ex:1.0」
+				                     ユーザー名　イメージ名　タグ
+									 
+			・Docker Hubからログアウト
+				・「Docker logout」でログアウト
+									  
