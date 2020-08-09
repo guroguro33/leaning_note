@@ -129,4 +129,54 @@ Docker
 									 
 			・Docker Hubからログアウト
 				・「Docker logout」でログアウト
+				
+		Dockerイメージを作成
+			①取得
+				・「docker image pull centos:latest」	latest・・・最新版（省略可能）
+				・「docker image ls」で確認
+				
+			②コンテナの生成と起動
+				・「docker container run --name centos_ex -it -d centos:latest」
+												コンテナ名の氏名　　イメージ名
+												
+			③今回はファイルを作成し、コンテナにコピー
+				・「echo "Hello CentOS" > centos.txt」 でリダイレクトしてtxtを作成
+				・「cat centos.txt」でファイルの中身を確認
+				・「docker container cp」	コンテナ間、およびホストOSとコンテナ間のデータコピー可能
+				・「docker container cp centos.txt centos_ex:/root」	ホストのcentos.txtをcentos_exの/rootにコピー
+									　　コピー元の名前　コンテナ名　パス名
+				・「docker exec centos_ex ls /root」	lsやcatコマンドでファイルを確認
+								コンテナの名前　コマンド
 									  
+			④イメージの作成
+				・「docker container commit」
+					「docker container commit -a "toru" centos_ex t02f447f/centos-ex-img:1.0」
+											　作者名(-a)　コンテナ名　ユーザー名　イメージ名　　 タグ名
+											
+			⑤イメージのアップロード
+				・docker Hubにログインして、pushして、ログアウトする
+				・「docker image push t02f447f/centos-ex-img:1.0」
+						             ユーザー名　イメージ名　　　タグ
+									 
+			・ローカルにイメージを保存、読み込み
+				・「docker image save」	ローカルにイメージ保存
+					・「docker image save -o (名前) .tar (イメージ名)」
+						例「docker image save -o hello-ex.tar t02f447f/hello-ex」
+						
+				・「docker image load」	ローカルのデータを読み込み
+					・やる前にimageを一旦削除「docker image rm」
+					・「docker image load -i (名前) .tar」で読み込み
+						例「docker image load -i hello-ex.tar」
+			
+			・エクスポート（コンテナを保存）、インポート（イメージとして読み込む）
+				・「docker container export」	ローカルにコンテナ保存
+				・「docker container import」	保存したコンテナをイメージとして読み込む
+					・saveとloadはイメージの保存と読み込み
+					・exportとimportはコンテナ保存し、そこからイメージ生成
+					
+					・「docker container export (コンテナ名) > (ファイル名).tar」	コンテナを生成してから保存すること
+						1. docker container run --name centos-con -it -d t02f447f/centos-ex-img:1.0
+						2. docker container export centos-con > centos-con.tar
+					
+					・「cat (ファイル).tar | docker image import - (イメージ名)」
+						1. cat centos-con.tar | docker image import - t02f447f/centos-ex-img:1.1
