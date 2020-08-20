@@ -1,0 +1,214 @@
+基本文法
+	・ファイル構成
+		・パッケージ（全小文字ファイル名）の中にクラス（アッパーキャメルケース）
+	・コメント
+		①//	コメント
+		②/*
+			ここにコメント
+		 */
+		③
+	
+	・Javaでは変数を使う際に、データ型を宣言する。
+		long		整数（64ビット） -9223372036854775808 〜 9223372036854775807
+		int			整数（32ビット） -2147483648 〜 2147483647
+		short		整数（16ビット） -32768 〜 32767
+		byte		整数（8ビット）  -128 〜 127
+		double		小数（64ビット）
+		float		小数（32ビット）
+		boolean		真偽（trueもしくはfalse）
+		char		1文字
+		String		文字列（頭が大文字）
+		
+		・定められたデータのサイズを超えたり、データ型の宣言をしないとエラーが出る。
+			int number = 11111;
+		・charは１文字、Stringは複数文字可能。charはシングルクォーテーョン、Stringはダブルクォーテーョンで囲んで使う。
+			char letter ='あ';
+			String text = "ああああ";
+	
+	・変数名の付け方
+		・ローワーキャメルケース、予約後は使用不可
+		・予約語の例	abstract,case,do,new,int,short,boolean,this
+			short shortNumber = 111;
+			
+	・配列の宣言の仕方
+		・[]を使って宣言する。下記のどちらでもよい。3は要素数
+			String[] hairetsu = new String[3];
+			String hairetsu2[] = new String[3];
+			
+		・配列を宣言するときには、配列のサイズを指定し、初期化する（固定長配列）
+		・可変長配列の後ほど
+		
+			hairetsu[0] = "りんご";
+			hairetsu[1] = "みかん";
+			hairetsu[2] = "ぶどう";
+		
+		・最初から配列の変数に値を入れて宣言することもできる。この場合は要素数を指定する必要なし
+			int[] hairetsu3 = {5, 4, 3, 2};
+			System.out.println(hairetsu3);
+			
+		・配列のサイズを取得したい場合はlengthを使う
+			System.out.println("配列のサイズ:" + hairetsu3.length);
+			
+	・データが型には「基本型（プリミティブ型）」と「参照型」の２種類がある。
+		「基本型」は先頭が小文字で、変数の中に値を直接保持している。
+		「基本型」は上記のString以外の8つだけ。
+		「参照型」は先頭が大文字で、変数はデータが実際に存在してるパソコン上の場所を参照しているだけで、
+		 値を直接的に保持しているわけではない。
+		「参照型」は、StringやIntegerといったものや、配列などが当てはまる。
+		「参照型」だと変数の中にnullを入れられたり、メソッドを呼び出したりできる。
+		 例えば、Integerはintと同様に整数を格納できるデータ型(32ビット)だが、intと違ってnullをいれることができる。
+		
+	・String text2 = "Javaの学習中です";
+		System.out.println("text2の６文字目：" + text2.charAt(5));
+		System.out.println("text2の６文字目から８文字目の切り出し:" + text2.substring(5,7));
+		System.out.println("text2の文字列の文字数を取得：" + text2.length());
+		System.out.println("text2に「Java」という文字が含まれるか検索:" + text2.contains("Java"));
+		System.out.println("text2に「PHP」という文字が含まれるか検索：" + text2.contains("PHP"));
+		
+	・定数の作り方　先頭にfinalというキーワードを付与する
+		・命名規則「すべて大文字」、「複数文字の場合は区切りにアンダースコア」
+		・final String GREETING_MSG = "こんにちわ！";
+		
+	・比較演算子と論理演算子
+		・基本的にphpと同じ
+			System.out.println("1 == 1:" + (1 == 1));	// true
+			System.out.println("1 != 1:" + (1 != 1));	// false
+			System.out.println("2 > 1:" + (2 > 1));	// true
+		・定義　int i = 1;
+		・インクリメント　i++;
+		・i += 3;
+			System.out.println("i:" + i);	// 5
+		・文字列の結合はjsと同じく「+」を使う
+			String str1 = "Java";
+			String str2 = "勉強中";
+			System.out.println(str1 + str2);
+			
+		・演算子で文字列結合することも可能
+			str1 += str2;
+		
+		・文字列を数値に変換する	Integer.parseInt()
+		・数値を文字列に変換する	String.valueOf()
+		・Stringなどの参照型は「==」ではなく「.equals」を使う
+			・文字列を定義しただけのString型は==で比較可能
+				String text1 = "Java";
+				String text2 = "Java";
+				if(text1 == text2){
+					System.out.println("text1とtext2とは等しい") ; // こっちがはしる！
+				}else {
+					System.out.println("text1とtext2とは違う");
+				}
+			・文字列を追加すると==で比較できなくなる！
+				text1 += "の勉強中です！";
+				text2 += "の勉強中です！";
+				if(text1 == text2){
+					System.out.println("text1とtext2とは等しい"); 
+				}else {
+					System.out.println("text1とtext2とは違う"); // こんどはこっち！
+				}
+			・.equalsを使うと比較可能
+				if(text1.equals(text2)){
+					System.out.println("text1とtext2とは等しい"); // こっちになる！
+				}else {
+					System.out.println("text1とtext2とは違う"); 
+				}
+				
+		・phpでは、値そのものを使って、真か偽かを判定して条件分岐をすることができたが、
+		　Javaではできない。boolean値のみ、そのまま使える。
+			・真偽値の頭に「!」をつけると、中身が反転する
+				boolean b = true;
+				if(!b) {
+					System.out.println("bは偽です");
+				} else {
+					System.out.println("bは真です"); //　こっち
+				
+	・if文
+		・elseとifの間には半角スペースが必要
+		・３項演算子が使える
+		
+	・switch文もPHPと同様に使用可能
+		
+	・for文もほぼPHPと同様に使用可能
+		・breakをつかうとそこで　for文の処理が終了
+		・continueをつかうと後続の処理をスキップしてfor文を継続
+		
+	・拡張for文(foreachのようなもの)
+		for(String fruit : fruits) {
+			System.out.println(fruit);
+		}
+		
+	・while文もPHP同様
+	
+	・関数
+		・クラスには様々な関数（メソッド）や変数を使うことができる。
+		　メソッドは下記のように書く		
+			修飾子 戻り値の型 メソッド名(引数) {
+			  命令文;
+			  return　式；
+			}
+		・引数が不要な場合は省略可能。
+		・修飾子には、「アクセス修飾子」といった
+			・public → すべてのクラスからアクセスできる
+			・protected → 現在のクラスとサブクラス（子クラス）からアクセスできる
+			・private → 現在のクラスからだけアクセスできる
+			・つけない場合 → 現在のクラスと同じパッケージのクラスからアクセスできる）
+		　であったり、他にも、「static修飾子」、「final修飾子」といったものも存在するが、ここではすべて覚えなくても大丈夫。
+		
+		・引数の数やデータ型が違えば、同じメソッド名で複数のメソッドを定義できる。→オーバーロードという
+		・戻り値がない場合は、void型を使う
+		・クラス内に直接定義した変数	メンバ変数（フィールド変数）
+		・メソッド内で飲み使われる変数	ローカル変数
+		
+	・ライブラリ
+		・標準クラスライブラリ	Javaがもともと用意してくれているライブラリ
+			・可変長配列を扱うList
+				・クラスファイルの定義前にimportする
+					・import java.util.List;
+					・import java.util.ArrayList;
+				・使い方
+					・List<String> strList = new ArrayList<String>();
+				・要素の追加
+					・strList.add("java");
+				・拡張for文で使用する
+					・for(String s: strList){
+						System.out.println(s);
+					}
+				・要素の削除
+					・strList.remove(1);
+		・外部ライブラリ
+			// 「外部ライブラリ」を使う場合は、jarファイルという、javaのソースコードをまとめたファイルをまず取得して、
+			// そのファイルを置いた場所を「ビルドパス」として設定してあげる必要がある（どこのjarをおいているのかプログラム側に教えてあげる必要がある）
+			// 今回は、文字列の操作等をシンプルに行うことができる「StringUtils」というライブラリを実際に使ってみる
+			// 下記のURLにアクセスして、zipファイルをダウンロードして解凍すると、「commons-lang3-3.9.jar」というjarファイルが取得できる
+			// （参照サイト）http://commons.apache.org/proper/commons-lang/download_lang.cgi
+			// jarファイルを置く場所は基本的にどこでも問題ないが、プロジェクトで使うjarファイルはプロジェクト内に配置したほうが管理しやすい。
+			// プロジェクト名を右クリックして「新規 > フォルダ」を選択し、「lib」という名前のフォルダを作成して、そこにjarファイルをドラッグ&ドロップでコピーして配置してみましょう。
+			// jarファイルをクリックして「ビルドパス > ビルドパスに追加」として設定してあげましょう。
+			// 下記のように、StringUtilsと書いた上で、Command + Shift + OとするとEclipseが自動的にimport文を書いてくれる。
+			
+			・nullや空文字を判別してくれるStringUtils.isEmpty()メソッド
+				・System.out.println("StringUtils.isEmpty()を使った、空文字の判定結果：" + StringUtils.isEmpty(str1));	// true
+				
+			・文字列の中身がアルファベットかどうか判定
+				・StringUtils.isAlpha(str1);
+			
+			・文字列の中身が数値かどうか判定
+				・StringUtils.isNumeric(str1);
+		
+		・オリジナルクラス
+			// クラスの使い方について
+			// 「自分で作った他のクラスファイル」の読み込み
+			// パッケージ名やクラス名を指定して、importしてあげれば良い。
+			// 前回のレッスンで使ったSampleClass06を読み込むためには、
+			// import javasample06.SampleClass06;とする
+			// そうするとSampleClass06が呼び出せる状態になるので、そのクラスを実際に使うために「new」演算子を使ってインスタンス化する（この辺りは後ほど説明していきます）
+				クラス 変数 = new クラス();
+				SampleClass06 sc6 = new SampleClass06();
+			// SampleClass06のmainメソッドを呼び出してみる。
+			// 呼び出しの時は、Stringの配列を引数で渡さないといけないので、空の配列を作って渡す。
+				String[] str = {};
+				sc6.main(str);
+				
+	・サーブレット
+		・tomcat
+			・環境構築	HP→Download→Tomcat9→Coreのzipファイル→解凍したものをEclipse直下のContentsフォルダと同階層に置く
+			・EclipseでTomcatを使えるようにする
