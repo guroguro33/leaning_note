@@ -161,11 +161,12 @@
 	・ライブラリ
 		・標準クラスライブラリ	Javaがもともと用意してくれているライブラリ
 			・可変長配列を扱うList
-				・クラスファイルの定義前にimportする
+				・クラスファイルの定義前にimportする（クラス名をクリックし、command+shift+oでimportを生成できる）
 					・import java.util.List;
 					・import java.util.ArrayList;
 				・使い方
 					・List<String> strList = new ArrayList<String>();
+					・List<String> strList = new ArrayList<>();	ダイヤモンド演算子で省略可能
 				・要素の追加
 					・strList.add("java");
 				・拡張for文で使用する
