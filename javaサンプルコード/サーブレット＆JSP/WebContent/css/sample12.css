@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+@import
+	url('https://fonts.googleapis.com/css?family=Pacifico|Quicksand&display=swap')
+	;
+
+body {
+	width: 100%;
+	font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro",
+		"Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック",
+		"MS PGothic", sans-serif;
+	font-size: 16px;
+	color: #000;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: #333333;
+	text-decoration: none;
+	transition: .3s;
+}
+
+a:hover {
+	color: #534bff;
+	transition: .3s;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	width: 100%;
+	height: 80px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05);
+	background: #fff;
+	position: relative;
+}
+
+.logo {
+	padding-left: 30px;
+	font-family: 'Pacifico', cursive;
+	font-size: 28px;
+}
+
+.main {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.content {
+	vertical-align: top;
+	font-weight: normal;
+	resize: none;
+	width: 100%;
+	height: 100px;
+	padding: 2.375rem 3.125rem 3.3125rem 3.125rem;
+	border-radius: .5rem;
+	box-shadow: 0 0.3125rem 0.625rem 0 rgba(0, 0, 0, 0.05);
+	border: solid .0625rem #e8e8e8;
+	transform: translateY(0);
+	transition: all .15s ease;
+}
+
+label[for="content"] {
+	font-weight: normal;
+}
+
+.diary-content {
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 15px;
+	background: #fff;
+	padding: 2.375rem 3.125rem 3.3125rem 3.125rem;
+	border-radius: .5rem;
+	box-shadow: 0 0.3125rem 0.625rem 0 rgba(0, 0, 0, 0.05);
+	border: solid .0625rem #e8e8e8;
+	transform: translateY(0);
+	transition: all .15s ease;
+}
+
+.diary-content p {
+	font-size: 16px;
+	color: #534bff; font-weight : bold;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	width: 100%;
+	font-weight: bold;
+}
+
+.post-date {
+	font-size: 12px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+.content:focus {
+	outline: 0;
+}
+
+.btn {
+	margin: 0 auto;
+	background-color: #fff;
+	display: inline-flex;
+	justify-content: center;
+	padding: 0.7rem 1.5rem; font-size : 1.4rem;
+	line-height: 1.4375rem;
+	border-radius: .3125rem;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+	cursor: pointer;
+	color: #534bff;
+	font-weight: bold;
+	border: 0;
+	font-size: 1.4rem;
+}
+
+.btn-success {
+	background-image: linear-gradient(105deg, #8272ff, #533ef7);
+	color: #fff;
+}
+
+.index_type_virtualcard_circle {
+	position: absolute;
+	right: calc(-875px/ 2);
+	top: -60px;
+	width: 875px;
+	height: 875px;
+	border-radius: 50%;
+	background-image: linear-gradient(334deg, rgba(27, 169, 225, 0.59),
+		rgba(190, 121, 198, 0.59));
+	z-index: -2;
+}
+
+.diary-list-title {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.button-area {
+	height: 60px;
+	overflow: hidden;
+}
+
+.mt30 {
+	margin-top: 20px;
+}
+
+.relative {
+	position: relative;
+}
+
+.float-right {
+	float: right;
+}
