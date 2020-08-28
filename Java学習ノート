@@ -268,6 +268,37 @@
 		
 		・DAOクラス(Data Access Object　Javaでのデータベースへの接続を記載しておくもの)
 		・DTOクラス(Data Transfer Object データなどの様々な値を転送するための格納庫のようなもの)
+		
+		・アクションタグ　JSP内でよく使用する処理をタグ形式で記述
+			・例　includeディレクティブ　<%@ include file="/WEB-INF/jsp/head13.jsp" %>
+				 アクションタグ			<jsp:include file="/WEB-INF/jsp/head13.jsp" />
+				 
+			・Javaが提供する「標準アクションタグ」と開発者がアクションタグを作り、配布している「カスタムタグ」がある。
+				・有名なカスタムタグをまとめたものを「JSTL」という
 			
+			・JSTLの使い方
+				1. 	jarファイルのDL https://tomcat.apache.org/download-taglibs.cgi
+					・taglibs-standard-impl-1.2.5.jar
+					・taglibs-standard-spec-1.2.5.jar
+					・taglibs-standard-jstlel-1.2.5.jar
+				2. 	WEB-INF/libディレクトリへ上記ファイルの配置（自動でビルドパスが通る）
+				3.	jspファイル上部へ下記の記述
+						<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+						<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+				4.	<c:forEach var="diary" items="${diary}">などと記載して使う
 		
+		・EL式	スコープに保存されている値を簡単にJSP上で出力
+			・${属性名}とすると、その属性名に格納されている値を表示できる。
+			・${属性名.プロパティ}とすれば、属性名の中プロパティにアクセスできる（getterが自動的に行われる）
 		
+・EclipseでSpring Bootを使う
+	・導入方法
+		1. EclipseマーケットプレイスでSpringToolsをインストール
+		2. パッケージエクスプローラの空白部分で右クリック→新規→その他
+		3. 検索バーにspringを入力し、新規Springスタータープロジェクトを選択
+		4. 名前とパッケージを任意入力し、次へ
+		5. 依存関係で、web→Spring Webを選択し、完了
+	・特徴
+		・アノテーションを多用。
+		・DI（Dependency Injection）を使える　→ 他のクラスを呼び出す際に「new」と書かなくても使える
+		・DIを活用すると単体テストが効率的
