@@ -299,6 +299,9 @@
 		4. 名前とパッケージを任意入力し、次へ
 		5. 依存関係で、web→Spring Webを選択し、完了
 	・特徴
-		・アノテーションを多用。
+		・アノテーションを多用。@RestControllerなど。
 		・DI（Dependency Injection）を使える　→ 他のクラスを呼び出す際に「new」と書かなくても使える
 		・DIを活用すると単体テストが効率的
+	・JDBCの使い方
+		・pom.xmlファイル内のdependencies欄にhttps://mvnrepository.com/artifact/mysql/mysql-connector-javaなどの
+		サイトから記述を引っ張ってきてコピペすると、Maven依存関係に自動で追加される。
