@@ -158,25 +158,25 @@ Docker
 				・「docker image push t02f447f/centos-ex-img:1.0」
 						             ユーザー名　イメージ名　　　タグ
 									 
-			・ローカルにイメージを保存、読み込み
-				・「docker image save」	ローカルにイメージ保存
-					・「docker image save -o (名前) .tar (イメージ名)」
-						例「docker image save -o hello-ex.tar t02f447f/hello-ex」
+		・ローカルにイメージを保存、読み込み
+			・「docker image save」	ローカルにイメージ保存
+				・「docker image save -o (名前) .tar (イメージ名)」
+					例「docker image save -o hello-ex.tar t02f447f/hello-ex」
 						
-				・「docker image load」	ローカルのデータを読み込み
-					・やる前にimageを一旦削除「docker image rm」
-					・「docker image load -i (名前) .tar」で読み込み
-						例「docker image load -i hello-ex.tar」
+			・「docker image load」	ローカルのデータを読み込み
+				・やる前にimageを一旦削除「docker image rm」
+				・「docker image load -i (名前) .tar」で読み込み
+					例「docker image load -i hello-ex.tar」
 			
-			・エクスポート（コンテナを保存）、インポート（イメージとして読み込む）
-				・「docker container export」	ローカルにコンテナ保存
-				・「docker container import」	保存したコンテナをイメージとして読み込む
-					・saveとloadはイメージの保存と読み込み
-					・exportとimportはコンテナ保存し、そこからイメージ生成
+		・エクスポート（コンテナを保存）、インポート（イメージとして読み込む）
+			・「docker container export」	ローカルにコンテナ保存
+			・「docker container import」	保存したコンテナをイメージとして読み込む
+				・saveとloadはイメージの保存と読み込み
+				・exportとimportはコンテナ保存し、そこからイメージ生成
 					
-					・「docker container export (コンテナ名) > (ファイル名).tar」	コンテナを生成してから保存すること
-						1. docker container run --name centos-con -it -d t02f447f/centos-ex-img:1.0
-						2. docker container export centos-con > centos-con.tar
+				・「docker container export (コンテナ名) > (ファイル名).tar」	コンテナを生成してから保存すること
+					1. docker container run --name centos-con -it -d t02f447f/centos-ex-img:1.0
+					2. docker container export centos-con > centos-con.tar
 					
-					・「cat (ファイル).tar | docker image import - (イメージ名)」
-						1. cat centos-con.tar | docker image import - t02f447f/centos-ex-img:1.1
+				・「cat (ファイル).tar | docker image import - (イメージ名)」
+					1. cat centos-con.tar | docker image import - t02f447f/centos-ex-img:1.1
