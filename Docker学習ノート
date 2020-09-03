@@ -180,3 +180,6 @@ Docker
 					
 				・「cat (ファイル).tar | docker image import - (イメージ名)」
 					1. cat centos-con.tar | docker image import - t02f447f/centos-ex-img:1.1
+					
+		・Docker toolboxの導入
+			・参考　https://docs.docker.jp/mac/step_one.html
