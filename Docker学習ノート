@@ -183,3 +183,37 @@ Docker
 					
 		・Docker toolboxの導入
 			・参考　https://docs.docker.jp/mac/step_one.html
+			
+	・docker-machineについて
+		・使用可能なマシンの確認	
+			・Docker-machine　ls
+				Docker Toolboxの場合はvirtualboxの仮想マシンとなる。おいおいAWSなどクラウドなどになる。
+				
+		・新たなマシンの追加
+			・docker-machine create --driver [ドライバ名] [マシン名]
+			例　docker-machine create --driver virtualbox sample
+			
+		・環境変数の確認
+			・docker-machine env [マシン名]	（マシン名は省略可能）
+		
+		・マシン状態の確認
+			・docker-machine status [マシン名]
+				Running・・・実行中　Stopped・・・停止中　Saved・・・保存されている
+				
+		・マシンの停止
+			・docker-machine stop [マシン名]
+			
+		・マシンの起動（IPアドレスが変わる可能性あり）
+			・docker-machine start [マシン名]
+		
+		・マシンの再起動（IPアドレスが変わる可能性あり）
+			・docker-machine restart [マシン名]
+				・Savedの場合はこれを使うと良い
+		
+		・マシンの削除
+			・docker-machine rm [マシン名]
+				
+		・マシンにssh接続
+			・docker-machine ssh [マシン名]
+			・終了はexit
+		
