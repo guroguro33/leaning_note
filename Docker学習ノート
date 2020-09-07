@@ -105,7 +105,8 @@ Docker
 				・「CMD」	docker run時に実行されるコマンド
 				
 		イメージの生成
-			・ホームディレクトリに戻ってDockerイメージを作成
+			・ホームディレクトリに戻ってDockerイメージを作成	
+			・カレントディレクトリの場合は再度にスペースと.をつける
 			・「docker image build -t hello-example myhello」
 			                          イメージ名　　ディレクトリ名
 		
