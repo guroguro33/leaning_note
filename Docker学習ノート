@@ -218,3 +218,16 @@ Docker
 			・docker-machine ssh [マシン名]
 			・終了はexit
 		
+	・ONBUILD関数	次のビルド時に実行するコマンドをイメージ内に設定
+				　 自身のDockerfileから生成したイメージをベースとした別のDockerfileを
+				   ビルドする時に実行される
+				   
+		・使用例　ONBUILD ADD webusite.tar var/www/html (Dockerfile内)
+	
+	・ADDコマンド	イメージにホスト上のファイルやディレクトリを追加
+   				　リモートファイルのダウンロード、アーカイブの解凍
+				   
+	・圧縮ファイル（tar）の作り方
+		・tar cvf website.tar .
+		          ファイル名　　カレントディレクトリ
+	
