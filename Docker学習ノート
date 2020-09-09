@@ -231,3 +231,9 @@ Docker
 		・tar cvf website.tar .
 		          ファイル名　　カレントディレクトリ
 	
+	・ENTRYPOINTコマンド	docker container run を実行時に実行されるコマンド
+		・ENTRUPOINT [コマンド]	Exec形式
+		・ENTRYPOINT コマンド	Shell形式
+		
+		例	ENTRYPOINT ["nginx", "-g", "daemon off;"]	Exec形式
+		    ENTRYPOINT nginx -g 'daemon off;' 			Shell形式 
