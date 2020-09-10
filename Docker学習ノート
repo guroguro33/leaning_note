@@ -217,23 +217,58 @@ Docker
 		・マシンにssh接続
 			・docker-machine ssh [マシン名]
 			・終了はexit
+			
+	・Dockerfileに記述するコマンド
 		
-	・ONBUILD関数	次のビルド時に実行するコマンドをイメージ内に設定
-				　 自身のDockerfileから生成したイメージをベースとした別のDockerfileを
-				   ビルドする時に実行される
-				   
-		・使用例　ONBUILD ADD webusite.tar var/www/html (Dockerfile内)
-	
-	・ADDコマンド	イメージにホスト上のファイルやディレクトリを追加
-   				　リモートファイルのダウンロード、アーカイブの解凍
-				   
-	・圧縮ファイル（tar）の作り方
-		・tar cvf website.tar .
-		          ファイル名　　カレントディレクトリ
-	
-	・ENTRYPOINTコマンド	docker container run を実行時に実行されるコマンド
-		・ENTRUPOINT [コマンド]	Exec形式
-		・ENTRYPOINT コマンド	Shell形式
+		・ONBUILD関数	次のビルド時に実行するコマンドをイメージ内に設定
+					　 自身のDockerfileから生成したイメージをベースとした別のDockerfileを
+					ビルドする時に実行される
+					
+			・使用例　ONBUILD ADD webusite.tar var/www/html (Dockerfile内)
 		
-		例	ENTRYPOINT ["nginx", "-g", "daemon off;"]	Exec形式
-		    ENTRYPOINT nginx -g 'daemon off;' 			Shell形式 
+		・ADDコマンド	イメージにホスト上のファイルやディレクトリを追加
+					　リモートファイルのダウンロード、アーカイブの解凍
+					
+		・圧縮ファイル（tar）の作り方
+			・tar cvf website.tar .
+					ファイル名　　カレントディレクトリ
+		
+		・ENTRYPOINTコマンド	docker container run を実行時に実行されるコマンド
+			・ENTRUPOINT [コマンド]	Exec形式
+			・ENTRYPOINT コマンド	Shell形式
+			
+			例	ENTRYPOINT ["nginx", "-g", "daemon off;"]	Exec形式
+				ENTRYPOINT nginx -g 'daemon off;' 			Shell形式 
+				
+		・ENVコマンド　Dockerfile内で環境変数を設定する場合に用いる
+			・ENV [key] [value]
+			・ENV [key]=[value]
+			
+			例	ENV name "Taro"
+				ENV addr="Tokyo"
+				
+		・WORKDIRコマンド	Dockerfileに書かれた以下の命令を実行するための作業ディレクトリを指定
+						   RUN CMD ENTRYPOINT COPY ADD
+			・WORKDIR [作業ディレクトリのパス]
+			・例　WORKDIR /first
+			
+		・USERコマンド　	イメージの実行やDockerfileの以下の命令を実行するためのユーザーを指定
+						  RUN CMD ENTRYPOINT
+			・USER ユーザー名/UID
+			・例　USER "Taro"
+			
+		・LABELコマンド	　　イメージにバージョン情報・作者情報・コメント等をもたせる
+			・LABEL <キー名>=<値>
+			・例 LABEL title="webapp"
+		
+		・ARGコマンド		Dockerfile内の変数の設定
+			・ARG <名前>[=デフォルト値]
+			・例　ARG name="Hanako"
+			
+		・SHELLコマンド		デフォルトシェルの設定
+			・SHELL ["シェルのパス", "パラメータ"]
+			・SHELL ["/bin/bash", "-c"]
+			
+		・VOLUMEコマンド	イメージにボリュームを割り当てる
+			・VOLUME ["/マウントポイント"]
+			・例　VOLUME ["/var/log"]
