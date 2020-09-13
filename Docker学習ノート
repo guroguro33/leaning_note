@@ -280,4 +280,11 @@ Docker
 			・libbb		　 アプレット間で使う関数を定義したもの
 		・使ってみる
 			「docker run -it --rm busybox」	--rmをつけると終了時に自動的にコンテナが消える
+			
+	・ボリューム
+		・ボリュームの作成	docker volume create [ボリューム名]
+		・ボリュームの一覧	docker volume ls
+		・ボリュームの詳細	docker volume inspect [ボリューム名]
+		・ボリュームの削除	docker volume rm [ボリューム名]
+		・ボリュームの掃除	docker volume prune
 		
