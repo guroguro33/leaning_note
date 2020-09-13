@@ -286,5 +286,15 @@ Docker
 		・ボリュームの一覧	docker volume ls
 		・ボリュームの詳細	docker volume inspect [ボリューム名]
 		・ボリュームの削除	docker volume rm [ボリューム名]
-		・ボリュームの掃除	docker volume prune
+		・ボリュームの掃除	docker volume prune 
 		
+		・コンテナにボリュームをマウント （コンテナを消してもボリュームは残る）
+			1.Dockerfileに記述する
+			2.Dockerコマンドで作成したボリュームをマウントする
+				docker run -v [ボリューム名]:[ディレクトリ名]
+				例　1.ボリュームを作る
+					docker volume create vol2
+					2.OSにマウントする
+					docker run -v vol2:/tmp/volume --rm -it ubuntu
+					              ボリューム　マウント先　使い捨て　OSのイメージ
+								  
