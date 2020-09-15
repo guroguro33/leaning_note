@@ -297,4 +297,13 @@ Docker
 					2.OSにマウントする
 					docker run -v vol2:/tmp/volume --rm -it ubuntu
 					              ボリューム　マウント先　使い捨て　OSのイメージ
-								  
+	
+	・Dockerのネットワーク
+		・コマンド「docker network ls」で確認
+		・初期で設定されているドライバ　「none」、「host」、「bridge」の３つ
+		・特に指定しないとbridgeが割り振られる
+		・nullドライバ	ネットワーク接続を必要としないコンテナで使用
+		・hostドライバ　Dockerホストと同じネットワークにスタックするドライバ
+			ホストと同じネットワークインターフェースとIPアドレスを持つ
+		・bridgeネットワーク　基本的にこれを使う
+			Linuxカーネルのbridgeネットワークを使用するための機能
