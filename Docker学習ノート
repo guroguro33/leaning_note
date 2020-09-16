@@ -299,7 +299,27 @@ Docker
 					              ボリューム　マウント先　使い捨て　OSのイメージ
 	
 	・Dockerのネットワーク
-		・コマンド「docker network ls」で確認
+		・コマンド
+			docker network ls			確認
+			
+			docker network create		生成
+				例　docker network create --driver=bridge web-network
+			
+			docker network inspect		詳細確認
+				例　docker network inspect web-network
+				
+			docker network connect		コンテナとの接続
+				例　docker network connect web-network webfront
+				                          ネットワーク名　コンテナ名
+										  
+			docker network disconnect	コンテナとの接続解除
+				例　docker network disconnect -f web-network webap
+											   ネットワーク名　コンテナ名
+											   
+			docker network rm			ネットワークの削除
+				例　docker network rm web-network
+				                     ネットワーク名
+											   
 		・初期で設定されているドライバ　「none」、「host」、「bridge」の３つ
 		・特に指定しないとbridgeが割り振られる
 		・nullドライバ	ネットワーク接続を必要としないコンテナで使用
@@ -307,3 +327,8 @@ Docker
 			ホストと同じネットワークインターフェースとIPアドレスを持つ
 		・bridgeネットワーク　基本的にこれを使う
 			Linuxカーネルのbridgeネットワークを使用するための機能
+		・ネットワークを指定したコンテナの起動
+			①ネットワーク作成
+			docker network create --driver=bridge web-network
+			②コンテナの起動
+			docker run -d -p 80:80 --name=webap --net=web-network nginx
