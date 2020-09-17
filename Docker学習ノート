@@ -332,3 +332,6 @@ Docker
 			docker network create --driver=bridge web-network
 			②コンテナの起動
 			docker run -d -p 80:80 --name=webap --net=web-network nginx
+			
+	・Docker toolboxはレガシーでdesktopが新しい
+		共存も可能
