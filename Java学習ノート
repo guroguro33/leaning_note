@@ -305,3 +305,12 @@
 	・JDBCの使い方
 		・pom.xmlファイル内のdependencies欄にhttps://mvnrepository.com/artifact/mysql/mysql-connector-javaなどの
 		サイトから記述を引っ張ってきてコピペすると、Maven依存関係に自動で追加される。
+		
+・スッキリわかるJava入門
+	・Java API 
+		・代表的なもの
+			java.lang	重要クラス群。これだけ特別にimport文が不要で呼び出し可能
+			java.util	便利なクラス
+			java.math	数学に関するもの
+			java.net	ネットワーク通信にか関わるもの
+			java.io		ファイル読み書きなどデータを逐次処理するためのもの
