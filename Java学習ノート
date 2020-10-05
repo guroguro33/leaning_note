@@ -314,3 +314,10 @@
 			java.math	数学に関するもの
 			java.net	ネットワーク通信にか関わるもの
 			java.io		ファイル読み書きなどデータを逐次処理するためのもの
+			
+	・命名規則
+		・パッケージ名						ドメイン名を逆順にしたもの	  com.example.foo
+		・ソースファイル名				 　　 クラス名.java				 Hero.java
+		・クラス名							単語の頭が大文字			Hero,MonsterInfo
+		・フィールド名(Java特有の変数のこと)　	最初以外の単語の頭が大文字    Level,itemList
+		・メソッド名						最初以外の単語の頭が大文字	  attack, findWeakPoint

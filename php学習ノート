@@ -1,4 +1,4 @@
-
+Udemy ともすたより
 
 	・全角を半角に変更する
 		mb_convert_kana( 変数 , 変更後の形 , 文字コード)
@@ -13,3 +13,13 @@
 		→1が繰り返される
 		
 		・曜日出力の際など7で割ったあまりを使うと$i=0~6をループさせることが可能
+		
+	・クッキーに保存（ブラウザを閉じても保存時間内は残る）
+		setcookie(string $name(変数名) [, string $value(保存したい値) = '' [, int $expire(保存時間) = 0]
+		例：<?php setcookie('save_message', 'Cookieに保存した値です', time() + 60 * 60 * 24 * 14 ); ?>
+		
+	・保存したクッキーの取得
+		$_COOKIE['変数名']
+		例：<?php print($_COOKIE['save_message']); ?>
+		
+	・セッションに保存（ブラウザを閉じると消える）
