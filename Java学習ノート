@@ -354,3 +354,14 @@
 		・クラス
 			なし　　　　 自分と同じパッケージに属するクラス(クラス名とソースファイル名は異なっていてOK。１つのソースファイルに複数の宣言をしてOK)
 			public     全てのクラス
+	
+	・継承
+		・定義
+			class クラス名　extends 元となるクラス名 {
+				親クラスとの差分メンバ
+			}
+		・継承不可(finalをつける)
+			public final class String extends Object { ~ }
+		・オーバーライド不可(finalをつける)
+			public final void slip() {~}
+			
