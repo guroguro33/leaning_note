@@ -372,3 +372,26 @@
 			super(引数); // ただしコンストラクタの最初の行しか記述できない
 			もし記述しない場合、コンパイラによって自動的に上記の行が自動挿入される。
 			
+	・高度な継承
+		・抽象クラス
+			・抽象ソメッドを含むクラス宣言
+				public abstract class Character {}
+				       ````````
+			・抽象メソッド宣言
+				public abstract void attack(Matango m);
+				　　　　````````
+		・インターフェース
+			・条件
+				メソッドが全て抽象メソッドである
+				フィールドを基本的に１つも持たない
+			・宣言方法
+				public interface Creature {
+					void run();  // 「public abstract」を省略可能
+				}
+			・インターフェースの実装
+				public class kyotoCleaningShop implements CleaningService {
+					// 親インターフェースで未定だった各メソッドの内容をオーバーライドして確定させる
+				}
+				メリット① 同じインターフェースをimplementsする複数の子クラスたちに、共通のメソッド群を実装するよう強制できる
+				メリット② あるクラスがインターフェースを実装していれば、少なくともそのインターフェースが定めたメソッドは持っていることが保証される
+				
