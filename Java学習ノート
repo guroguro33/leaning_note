@@ -384,14 +384,55 @@
 			・条件
 				メソッドが全て抽象メソッドである
 				フィールドを基本的に１つも持たない
+				
 			・宣言方法
 				public interface Creature {
 					void run();  // 「public abstract」を省略可能
 				}
+				
 			・インターフェースの実装
 				public class kyotoCleaningShop implements CleaningService {
 					// 親インターフェースで未定だった各メソッドの内容をオーバーライドして確定させる
 				}
+				
 				メリット① 同じインターフェースをimplementsする複数の子クラスたちに、共通のメソッド群を実装するよう強制できる
 				メリット② あるクラスがインターフェースを実装していれば、少なくともそのインターフェースが定めたメソッドは持っていることが保証される
+				
+			・インターフェースによる多重継承
+				public class PrincessHero implements Hero, Princess, Character {
+				                          ````````````````````````````````````
+				}
+				
+			・インターフェースの継承 (インターフェース同士はextendsを使う)
+				public interface Human extends Character {
+					void talk();
+					void watch();
+					void hear();
+					// 更に親インターフェースからrun()を継承
+				}
+				
+			・implementsとextendsの使い分け
+				継承元　　　　　　継承先　　　　　　使用するキーワード　　継承元の数
+				クラス　　　　　　クラス　　　　　　extends            1つ
+				インターフェース　インターフェース　 extends            1つ以上
+				インターフェース　クラス　　　　　　 implements         1つ以上
+				
+			・implementsとextendsを一緒に使う
+				public class Fool extends Character implements Human {
+					// Characterから継承したhpやgetName()などのメンバを継承している
+					// Characterから継承した抽象メソッドのattack()を実装
+					public void attack(Matango m){
+						// 処理
+					}
+					// 更にHumanから継承した４つの抽象メソッドを実装
+					public void talk() {```}
+					public void watch() {```}
+					public void hear() {```}
+					public void run() {```}
+					
+			・デフォルト実装付きの抽象メソッドの宣言
+				インターフェースが持てるメソッドは処理内容を持たない抽象メソッドに限らるが、defaultを使うと定義できる
+					default 戻り値　メソッド名(引数) {
+						処理のデフォルト実装
+					}
 				
