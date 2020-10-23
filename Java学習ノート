@@ -461,3 +461,36 @@
 		・利用方法
 			同一視して、配列を利用する
 			
+	・日付処理
+		・現在日時を持つDateインスタンスの生成
+			Date d = new Date();
+		・指定日時を持つDateインスタンスの生成
+			Date d = new Date(long値);  
+		・long値はlong time = System.currentTimeMillis();で取得可能
+		・カレンダーインスタンスの生成
+			Calendar c = Calendar.getInstance(); newは不要
+			・時間のセット
+				c.setTime(d); dはDate型関数
+				c.set(Calendar.YEAR, 2020);
+			・時間の取得
+				c.get(Calendar.YEAR);
+			・Calendarクラスのフィールドの種類
+				Calendar.YEAR	MONTH	DAY_OF_MONTH	HOUR	MINUTE	SECOND
+					年			　月		　日		　　時	　　　分　　　　秒
+		・DateからStringを生成する
+			SimpleDateFormat f = new SimpleDateFormat(書式文字列);
+			String s = f.format(date型変数);
+			
+		・StringからDateを生成する
+			SimpleDateFormat f = new SimpleDateFormat(書式文字列);
+			Date d = f.parse(文字列);
+	
+	・全てのクラスの祖先
+		・クラス定義時にextendsで親クラスを指定しなければ、java.lang.Objectを親クラスとして継承したとみなされる
+		・メソッドtoString()とequals()のオーバーライド
+			新しくクラスを開発したら、toString()とequals()をオーバーライドする必要性がないか検討する
+			
+	・基本データ型とラッパークラスの型変換
+		・ラッパークラス型と基本データ型との間で代入を行う式を記述すると、AutoBoxingとAutoUnboxingにより、
+		　自動的にValueOf()や〜value()による型変換が行われる。
+			
